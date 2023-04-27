@@ -23,11 +23,11 @@
             <div class="col" style="font-size:30px;padding-top:12em">
 
                 <div class="round-corners1" style="background-color:#313740;">
-                    <dt>Titel: @movie.Title</dt>
-                    <dt>Længde: @movie.Length minutter</dt>
-                    <dt>Genre: @movie.Genre</dt>
-                    <dt>Aldersgrænse: @movie.PgRating år</dt>
-                    <dt>Udgivelsesdato: @movie.PremiereDate</dt>
+                    <dt>Titel: @Html.DisplayFor(modelItem => movie.Title)</dt>
+                    <dt>Længde: @Html.DisplayFor(modelItem => movie.Length) minutter</dt>
+                    <dt>Genre: @Html.DisplayFor(modelItem => movie.Genre)</dt>
+                    <dt>Aldersgrænse: @Html.DisplayFor(modelItem => movie.PgRating) år</dt>
+                    <dt>Udgivelsesdato: @Html.DisplayFor(modelItem => movie.PremiereDate)</dt>
                 </div>
 
             </div>
