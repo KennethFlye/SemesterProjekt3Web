@@ -7,7 +7,7 @@ namespace SemesterProjekt3Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        string baseURL 
+        string baseURL;
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
