@@ -1,51 +1,45 @@
-﻿@model SemesterProjekt3Api.Model.MovieInfo
+﻿@using SemesterProjekt3Api.Model;
+@model SemesterProjekt3Api.Model.MovieInfo
 
 @{
     ViewData["Title"] = "Forside";
 }
 
-<h1>Index</h1>
+<h1>Velkommen til Vestbjerg Bio!</h1>
 
 
     <div>
-    <h4>MovieInfo</h4>
+    <h4>Vores Film:</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-@Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-@Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-@Html.DisplayNameFor(model => model.Length)
-        </dt>
-        <dd class = "col-sm-10">
-@Html.DisplayFor(model => model.Length)
-        </dd>
-        <dt class = "col-sm-2">
-@Html.DisplayNameFor(model => model.Genre)
-        </dt>
-        <dd class = "col-sm-10">
-@Html.DisplayFor(model => model.Genre)
-        </dd>
-        <dt class = "col-sm-2">
-@Html.DisplayNameFor(model => model.PgRating)
-        </dt>
-        <dd class = "col-sm-10">
-@Html.DisplayFor(model => model.PgRating)
-        </dd>
-        <dt class = "col-sm-2">
-@Html.DisplayNameFor(model => model.PremiereDate)
-        </dt>
-        <dd class = "col-sm-10">
-@Html.DisplayFor(model => model.PremiereDate)
-        </dd>
-    </dl>
-</div>
-<div>
-@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+        <div class="col" >
+                <dt>Længde: @Html.DisplayFor(model => model.Length)</dt>
+                <dt>Genre: @Html.DisplayFor(model => model.Genre)</dt>
+                <dt>Aldersgrænse: @Html.DisplayFor(model => model.PgRating)</dt>
+                <dt>Udgivelsesdato: @Html.DisplayFor(model => model.PremiereDate)</dt>
+            
+            
+        </div>
+        <div class="col">
+            <dd>
+                <img src="https://m.media-amazon.com/images/I/71HQiOZsZ6L._AC_UF894,1000_QL80_.jpg" width="330" height="480" class="img-responsive">
+            </dd>
+            <dd>
+                <a href="https://viaplay.dk/film/shrek-2-2004" title="Shrek 2"><button class="btn btn-primary btn-lg col-6" type="submit">Check forestillinger</button></a>
+            </dd>
+        </div>
+ 
+   
+        
+        
+
+        
+
+        
+        
+    
+    
+
 </div>
 
 
