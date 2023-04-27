@@ -17,3 +17,16 @@ body {
   margin-bottom: 60px;
 }
 
+.button-color {
+    background: #C73E35
+}
+
+.panel-color {
+    background: rgba(57, 68, 90, 0.95)
+}
+
+.round-corners1 {
+    border-radius: 25px;
+    padding: 20px;
+    
+}
