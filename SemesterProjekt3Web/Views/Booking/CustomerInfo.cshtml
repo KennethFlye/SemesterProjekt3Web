@@ -4,8 +4,38 @@
 @{
     ViewData["Title"] = "Customer Information";
 }
-<h1 class="text-center">Indtast venligt brugeroplysninger nedenfor</h1>
-<div style="text-align:right">
-    Fulde navn*
-    <input />
+<h1 class="text-center">Brugeroplysninger</h1>
+<br>
+<div style="text-align:right;">
+    <h2>Indtast venligt brugeroplysninger nedenfor</h2>
+    <form name="customerInfo" action="">
+        <div style="margin-bottom:5px;">
+            <i>Fulde navn*</i>
+            <input type="text" id="name" name="name"/>
+        </div>
+        <div style="margin-bottom:5px;">
+            <i>E-mail adresse*</i>
+            <input type="text" id="email" name="email"/>
+        </div>
+        <div style="margin-bottom:5px;">
+            <i>Tlf. nummer*</i>
+            <input type="text" id="phoneNo" name="phoneNo"/>
+        </div>
+    </form>
+    
+    <button id="btn" class="btn btn-lg button-color text-white" style="margin-top:6px;" type="submit"> <b>Fortsæt</b> </button>
+ 
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script>
+    $(function(){
+        $("#btn").click(function(){
+            
+            if()
+        });
+    });
+    
+
+</script>
