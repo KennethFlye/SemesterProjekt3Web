@@ -31,11 +31,11 @@ namespace SemesterProjekt3Web.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> Movies()
+        public  IActionResult Movies()
         {
 
-
-            return View(_movieAL.GetMovies());
+            Task<List<MovieInfo>> mInfo = _movieAL.GetMovies();
+             return View(_movieAL.GetMovies());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

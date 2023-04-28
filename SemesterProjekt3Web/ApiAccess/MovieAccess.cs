@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using SemesterProjekt3Api.Model;
+using SemesterProjekt3Web.Models;
 using System.Text;
 
 namespace SemesterProjekt3Web.Access
