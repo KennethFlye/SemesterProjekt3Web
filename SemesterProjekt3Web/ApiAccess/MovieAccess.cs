@@ -19,7 +19,7 @@ namespace SemesterProjekt3Web.Access
             List<MovieCopy> movies;
 
             // Create URI
-            var uri = new Uri(string.Format(baseUrl));
+            var uri = new Uri(string.Format(baseUrl + $"/api/movies"));
 
             //
             try
