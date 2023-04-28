@@ -14,7 +14,7 @@ namespace SemesterProjekt3Web.Access
             client = new HttpClient();
         }
 
-        public async Task<List<MovieCopy>> GetMovies()
+        public async Task<IEnumerable<MovieCopy>> GetMovies()
         {
             List<MovieCopy> movies;
 
