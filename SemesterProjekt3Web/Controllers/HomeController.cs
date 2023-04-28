@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using SemesterProjekt3Api.Model;
 using SemesterProjekt3Web.BusinessLogic;
 using SemesterProjekt3Web.Models;
 using System.Data;
@@ -35,7 +34,8 @@ namespace SemesterProjekt3Web.Controllers
         {
 
             Task<List<MovieInfo>> mInfo = _movieAL.GetMovies();
-             return View(_movieAL.GetMovies());
+            mInfo.GetAwaiter().GetResult();
+            return View(mInfo);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

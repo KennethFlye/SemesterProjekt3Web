@@ -6,7 +6,7 @@ namespace SemesterProjekt3Web.Access
 {
     public class MovieAccess
     {
-        readonly string baseUrl = "https://localhost:7155/api/movies";
+        readonly string baseUrl = "https://localhost:7155";
         readonly HttpClient client;
 
         public MovieAccess()
