@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SemesterProjekt3Web.Models.MovieInfo>
+﻿@model IEnumerable<SemesterProjekt3Web.Models.MovieCopy>
 
 @{
     ViewData["Title"] = "Movies";
@@ -17,19 +17,13 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.Language)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Length)
+                @Html.DisplayNameFor(model => model.Is3D)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Genre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PgRating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PremiereDate)
+                @Html.DisplayNameFor(model => model.Price)
             </th>
             <th></th>
         </tr>
@@ -41,19 +35,13 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @Html.DisplayFor(modelItem => item.Language)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Length)
+                @Html.DisplayFor(modelItem => item.Is3D)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PgRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PremiereDate)
+                @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
