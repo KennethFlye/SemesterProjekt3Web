@@ -1,26 +1,41 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using SemesterProjekt3Api.Model;
+using SemesterProjekt3Web.BusinessLogic;
 using SemesterProjekt3Web.Models;
+using System.Data;
 using System.Diagnostics;
+using System.Net.Http.Headers;
+
+using static System.Net.WebRequestMethods;
 
 namespace SemesterProjekt3Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        string baseURL 
+        readonly MovieAccessLogic _movieAL;
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _movieAL = new MovieAccessLogic();
         }
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+        public async Task<IActionResult> Movies()
+        {
+
+
+            return View(_movieAL.GetMovies());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
