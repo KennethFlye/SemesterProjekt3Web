@@ -33,7 +33,7 @@ namespace SemesterProjekt3Web.Controllers
         public  IActionResult Movies()
         {
 
-            Task<List<MovieInfo>> mInfo = _movieAL.GetMovies();
+            Task<List<MovieCopy>> mInfo = _movieAL.GetMovies();
             mInfo.GetAwaiter().GetResult();
             return View(mInfo);
         }
