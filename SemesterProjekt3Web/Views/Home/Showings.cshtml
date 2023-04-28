@@ -1,8 +1,50 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using System.Data
+@model DataTable
+@{
+    ViewData["Title"] = "Showings";
+   
 }
 
-<div class="text-center">
-    <h1 class="display-4">Nuværende forestillinger</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Showings</h1>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+   
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Id")
+            </th>
+            <th>
+                @Html.DisplayName("startTime")
+            </th>
+            <th>
+                @Html.DisplayName("IsKidFriendly")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (DataRow row in Model.Rows) {
+        <tr>
+            <td>
+                @row["Id"]
+            </td>
+            <td>
+                    @row["startTime"]
+                </td>
+            <td>
+                    @row["IsKidFriendly"]
+                </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
