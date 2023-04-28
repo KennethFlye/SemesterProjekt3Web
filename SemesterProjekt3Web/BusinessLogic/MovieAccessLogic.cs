@@ -1,7 +1,5 @@
-﻿using SemesterProjekt3Api.Model;
-using SemesterProjekt3Web.Access;
+﻿using SemesterProjekt3Web.Access;
 using SemesterProjekt3Web.Models;
-using SemesterProjekt3Web.Service;
 
 namespace SemesterProjekt3Web.BusinessLogic
 {
@@ -41,6 +39,7 @@ namespace SemesterProjekt3Web.BusinessLogic
             {
                 showings = null;
             }
+            
             return showings;
         }
     }
