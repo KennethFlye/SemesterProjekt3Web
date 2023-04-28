@@ -14,9 +14,9 @@ namespace SemesterProjekt3Web.Access
             client = new HttpClient();
         }
 
-        public async Task<List<MovieInfo>> GetMovies()
+        public async Task<List<MovieCopy>> GetMovies()
         {
-            List<MovieInfo> movies;
+            List<MovieCopy> movies;
 
             // Create URI
             var uri = new Uri(string.Format(baseUrl + $"/api/movies"));
@@ -28,7 +28,7 @@ namespace SemesterProjekt3Web.Access
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    movies = JsonConvert.DeserializeObject<List<MovieInfo>>(content);
+                    movies = JsonConvert.DeserializeObject<List<MovieCopy>>(content);
                 }
                 else
                 {

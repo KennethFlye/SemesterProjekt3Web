@@ -13,9 +13,9 @@ namespace SemesterProjekt3Web.BusinessLogic
             api = new MovieAccess();
         }
 
-        public async Task<List<MovieInfo>> GetMovies()
+        public async Task<List<MovieCopy>> GetMovies()
         {
-            List<MovieInfo> movies;
+            List<MovieCopy> movies;
 
             try
             {
