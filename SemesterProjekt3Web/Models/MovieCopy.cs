@@ -1,4 +1,4 @@
-﻿namespace SemesterProjekt3Api.Model
+﻿namespace SemesterProjekt3Web.Models
 {
     public class MovieCopy
     {
