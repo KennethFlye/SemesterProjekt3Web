@@ -8,6 +8,7 @@
         public double Total { get; set; }
         public String CustomerPhone { get; set; }
         public List<Seat> BookedSeats { get; set; }
+        public Showing Showing { get; set; }
 
     }
 }
