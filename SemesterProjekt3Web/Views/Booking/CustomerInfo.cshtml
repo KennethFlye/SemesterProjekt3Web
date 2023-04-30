@@ -1,6 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using System.Text.RegularExpressions;
+@model SemesterProjekt3Api.Model.Booking
 @{
     ViewData["Title"] = "Customer Information";
 }
@@ -29,6 +28,7 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="~/js/site.js"></script>
 
 <script>
     $(function(){
@@ -39,15 +39,29 @@
             var inputPhoneNo = $("#phoneNo").val();
             var alertMsg = "";
             var showAlert = false;
-            
+
+            var nameRegex = RegExp(namePattern);
+            var emailRegex = RegExp(emailPattern);
+            var phoneNoRegex = RegExp(phoneNoPattern);
+
             if (inputName === ""){
                 alertMsg += "Please fill in: Name\n"
             }
+            else if (!nameRegex.test(inputName)){
+                alertMsg += "Invalid Name\n"
+            }
+            
             if (inputEmail === ""){
                 alertMsg += "Please fill in: Email\n"
             }
+            else if (!emailRegex.test(inputEmail)) {
+                alertMsg += "Invalid Email\n"
+            }
             if (inputPhoneNo === ""){
                 alertMsg += "Please fill in: Phone number\n"
+            }
+            else if (!phoneNoRegex.test(inputPhoneNo)) {
+                alertMsg += "Invalid Phone number\n"
             }
             
             if (alertMsg !== ""){
