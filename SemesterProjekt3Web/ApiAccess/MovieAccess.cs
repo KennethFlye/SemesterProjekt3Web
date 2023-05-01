@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
 using SemesterProjekt3Web.Models;
-using System.Text;
 
 namespace SemesterProjekt3Web.Access
 {
     public class MovieAccess
     {
-        readonly string baseUrl = "https://localhost:7155";
+        readonly string baseUrl = "https://localhost:7155/api/movies";
         readonly HttpClient client;
 
         public MovieAccess()
@@ -14,14 +13,41 @@ namespace SemesterProjekt3Web.Access
             client = new HttpClient();
         }
 
-        public async Task<IEnumerable<MovieCopy>> GetMovies()
+        public async Task<IEnumerable<MovieInfo>> GetMoviesInfo()
+        {
+            List<MovieInfo> movies;
+
+
+            string url = baseUrl + $"/infos";
+            var uri = new Uri(string.Format(url));
+
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    movies = JsonConvert.DeserializeObject<List<MovieInfo>>(content);
+                }
+                else
+                {
+                    movies = null;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            return movies;
+        }
+
+        public async Task<IEnumerable<MovieCopy>> GetMoviesCopies()
         {
             List<MovieCopy> movies;
 
-            // Create URI
-            var uri = new Uri(string.Format(baseUrl + $"/api/movies"));
+            var uri = new Uri(baseUrl);
 
-            //
             try
             {
                 var response = await client.GetAsync(uri);
@@ -41,7 +67,8 @@ namespace SemesterProjekt3Web.Access
             }
             return movies;
         }
-        public async Task<List<Showing>> GetShowingsByMovieID(int Id)
+
+        public async Task<IEnumerable<Showing>> GetShowingsByMovieID(int Id)
         {
             List<Showing> showings;
 

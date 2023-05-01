@@ -33,10 +33,18 @@ namespace SemesterProjekt3Web.Controllers
         public  IActionResult Movies()
         {
 
-            Task<IEnumerable<MovieCopy>> mInfo = _movieAL.GetMovies();
+            Task<IEnumerable<MovieInfo>> mInfo = _movieAL.GetMovies();
             var nInfo = mInfo.GetAwaiter().GetResult();
             return View(nInfo);
         }
+
+        public ActionResult Showings(int id)
+        {
+            Task<IEnumerable<Showing>> mInfo = _movieAL.GetShowingsByMovieID(id);
+            var nInfo = mInfo.GetAwaiter().GetResult();
+            return View(nInfo);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

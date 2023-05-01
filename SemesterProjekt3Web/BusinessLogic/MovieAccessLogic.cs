@@ -13,13 +13,13 @@ namespace SemesterProjekt3Web.BusinessLogic
             api = new MovieAccess();
         }
 
-        public async Task<IEnumerable<MovieCopy>> GetMovies()
+        public async Task<IEnumerable<MovieInfo>> GetMovies()
         {
-            IEnumerable<MovieCopy> movies;
+            IEnumerable<MovieInfo> movies;
 
             try
             {
-                movies = await api.GetMovies();
+                movies = await api.GetMoviesInfo();
             }
             catch (Exception)
             {
@@ -27,9 +27,24 @@ namespace SemesterProjekt3Web.BusinessLogic
             }
             return movies;
         }
-        public async Task<List<Showing>> GetShowingsByMovieID(int id)
+
+        public async Task<IEnumerable<MovieCopy>> GetMoviesCopy()
         {
-            List<Showing> showings;
+            IEnumerable<MovieCopy> movies;
+
+            try
+            {
+                movies = await api.GetMoviesCopies();
+            }
+            catch (Exception)
+            {
+                movies = null;
+            }
+            return movies;
+        }
+        public async Task<IEnumerable<Showing>> GetShowingsByMovieID(int id)
+        {
+            IEnumerable<Showing> showings;
 
             try
             {
