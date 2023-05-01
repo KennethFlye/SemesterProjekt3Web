@@ -3,37 +3,65 @@
 @{
     ViewData["Title"] = "Showings";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var modelArray = Html.Raw(Json.Serialize(Model));
 }
 
 
 
 <h1>Forestillinger for @Model.First().MovieCopy.MovieType.Title</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Datoer:
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.startTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsKidFriendly)
-            </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.IsKidFriendly)
-            </td>
+<form>
+    <label for="date">Dato for forestillinger:</label>
+    <input type="date" id="date" name="date">
+</form>
 
-        </tr>
-}
-    </tbody>
-</table>
+<div id="movies" class="panel round-corners1 panel-color d-none" style="background-color:#313740;margin-top:30px">
+    
+    @foreach (Showing showing in Model)
+    {
+        <div class="row">
+            <div class="col-2">
+                startTime
+            </div>
+            <div class="col-2">
+                kidfriendly
+            </div>
+            <div class="col-2">
+                language
+            </div>
+            <div class="col-2">
+                is3d
+            </div>
+            <div class="col-2">
+                price
+            </div>
+            <div class="col-2">
+                <button></button>
+            </div>
+        </div>
+
+    }
+
+</div>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#date').on('input', function () {
+
+            var inputValue = $(this).val();
+
+            $("#movies").removeClass("d-none");
+
+            
+           
+         }); 
+    });
+</script>
+
