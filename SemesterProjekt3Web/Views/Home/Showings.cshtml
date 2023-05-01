@@ -1,44 +1,42 @@
-﻿@using System.Data
-@model DataTable
+﻿@model IEnumerable<SemesterProjekt3Web.Models.Showing>
+
 @{
     ViewData["Title"] = "Showings";
-   
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Showings</h1>
 
-
 <p>
     <a asp-action="Create">Create New</a>
-   
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayName("Id")
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayName("startTime")
+                @Html.DisplayNameFor(model => model.startTime)
             </th>
             <th>
-                @Html.DisplayName("IsKidFriendly")
+                @Html.DisplayNameFor(model => model.IsKidFriendly)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (DataRow row in Model.Rows) {
+@foreach (var item in Model) {
         <tr>
             <td>
-                @row["Id"]
+                @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                    @row["startTime"]
-                </td>
+                @Html.DisplayFor(modelItem => item.startTime)
+            </td>
             <td>
-                    @row["IsKidFriendly"]
-                </td>
+                @Html.DisplayFor(modelItem => item.IsKidFriendly)
+            </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
