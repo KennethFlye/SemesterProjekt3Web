@@ -1,5 +1,5 @@
 ﻿@using SemesterProjekt3Api.Model;
-@model IEnumerable<SemesterProjekt3Api.Model.MovieInfo>
+@model IEnumerable<SemesterProjekt3Api.Model.MovieCopy>
 
 @{
     ViewData["Title"] = "Forside";
@@ -7,27 +7,27 @@
 
 <h1>Velkommen til Vestbjerg Bio!</h1>
 <p style="font-size:22px">Vælg en af vores film for at se dens forestillinger</p>
-@foreach (MovieInfo movie in Model)
+@foreach (MovieCopy movie in Model)
 {
     <div>
         <br>
         <dl class="row">
             <div class="col text-center">
                 <dd>
-                    <a href="api/Movies/@movie.Id/showings" title="@movie.Title"><img src="https://i.redd.it/ipm79fj8h7ja1.png" width="420" height="630" class="img-responsive"></a>
+                    <a href="api/Movies/@movie.Id/showings" title="@movie."><img src="https://i.redd.it/ipm79fj8h7ja1.png" width="420" height="630" class="img-responsive"></a>
                 </dd>
                 <dd>
-                    <a href="api/Movies/@movie.Id/showings" title="@movie.Title"><button class="btn btn-lg col-7 button-color text-white" type="submit" style="height:70px;font-size:25px">Check forestillinger</button></a>
+                    <a href="api/Movies/@movie.Id/showings" title="@movie.MovieType.Title"><button class="btn btn-lg col-7 button-color text-white" type="submit" style="height:70px;font-size:25px">Check forestillinger</button></a>
                 </dd>
             </div>
             <div class="col" style="font-size:30px;padding-top:12em">
 
                 <div class="round-corners1" style="background-color:#313740;">
-                    <dt>Titel: @Html.DisplayFor(modelItem => movie.Title)</dt>
-                    <dt>Længde: @Html.DisplayFor(modelItem => movie.Length) minutter</dt>
-                    <dt>Genre: @Html.DisplayFor(modelItem => movie.Genre)</dt>
-                    <dt>Aldersgrænse: @Html.DisplayFor(modelItem => movie.PgRating) år</dt>
-                    <dt>Udgivelsesdato: @Html.DisplayFor(modelItem => movie.PremiereDate)</dt>
+                    <dt>Titel: @Html.DisplayFor(modelItem => movie.MovieType.Title)</dt>
+                    <dt>Længde: @Html.DisplayFor(modelItem => movie.MovieType.Length) minutter</dt>
+                    <dt>Genre: @Html.DisplayFor(modelItem => movie.MovieType.Genre)</dt>
+                    <dt>Aldersgrænse: @Html.DisplayFor(modelItem => movie.MovieType.PgRating) år</dt>
+                    <dt>Udgivelsesdato: @Html.DisplayFor(modelItem => movie.MovieType.PremiereDate)</dt>
                 </div>
 
             </div>
