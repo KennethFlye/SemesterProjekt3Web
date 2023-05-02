@@ -1,13 +1,16 @@
-﻿using SemesterProjekt3Web.ApiAccess;
+﻿using SemesterProjekt3Web.Access;
+using SemesterProjekt3Web.ApiAccess;
 using SemesterProjekt3Web.Models;
 
 namespace SemesterProjekt3Web.BusinessLogic
 {
     public class ShowingAccessLogic
     {
+        private readonly ShowingAccess api;
+
         public ShowingAccessLogic()
         {
-            var api = new ShowingAccess();
+            api = new ShowingAccess();
         }
         public async Task<Showing> GetShowingById(int id)
         {
