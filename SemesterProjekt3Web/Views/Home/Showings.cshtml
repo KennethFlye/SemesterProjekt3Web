@@ -10,37 +10,63 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table text-white">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Dato og startstidspunkt:
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.startTime)
+                Sprog:
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsKidFriendly)
+                2D/3D:
             </th>
-            <th></th>
+            <th>
+                Børnevenlig:
+            </th>
+            <th>
+                Pris:
+            </th>
+            <th style="visibility:hidden">
+                Book:
+            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                 @item.startTime.ToString("dd/MM/yyyy HH:mm")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.startTime)
+                @item.MovieCopy.Language
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsKidFriendly)
+                    @if (item.MovieCopy.Is3D)
+                    {
+                        <div>3D</div>
+                    }
+                    else
+                    {
+                        <div>2D</div>
+                    }
+                </td>
+            <td>
+                    @if (item.IsKidFriendly)
+                    {
+                        <div>Ja</div>
+                    }
+                    else
+                    {
+                        <div>Nej</div>
+                    }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @item.MovieCopy.Price Kr
+            </td>
+            <td>
+                <button class="btn-primary" style="color:red">what</button>
             </td>
         </tr>
 }
