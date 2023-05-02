@@ -38,7 +38,7 @@ namespace SemesterProjekt3Web.Controllers
             return View(nInfo);
         }
 
-        public ActionResult Showings(int id)
+        public IActionResult Showings(int id)
         {
             Task<IEnumerable<Showing>> mInfo = _movieAL.GetShowingsByMovieID(id);
             var nInfo = mInfo.GetAwaiter().GetResult();
