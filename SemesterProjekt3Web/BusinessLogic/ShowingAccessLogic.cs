@@ -1,5 +1,4 @@
-﻿/**
-
+﻿using SemesterProjekt3Web.Access;
 using SemesterProjekt3Web.ApiAccess;
 using SemesterProjekt3Web.Models;
 
@@ -7,7 +6,8 @@ namespace SemesterProjekt3Web.BusinessLogic
 {
     public class ShowingAccessLogic
     {
-        ShowingAccess api;
+        private readonly ShowingAccess api;
+
         public ShowingAccessLogic()
         {
             api = new ShowingAccess();
@@ -30,4 +30,3 @@ namespace SemesterProjekt3Web.BusinessLogic
 
     }
 }
-*/
