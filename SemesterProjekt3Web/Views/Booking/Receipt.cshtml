@@ -1,0 +1,47 @@
+﻿@using SemesterProjekt3Api.Model;
+@model SemesterProjekt3Api.Model.Booking
+
+@{
+    ViewData["Title"] = "Kvittering";
+    string seatString = "";
+}
+
+<h1 class="text-center">Din booking er nu gennemført!</h1>
+<h2 class="text-center">Vi ses snart...</h2>
+<br>
+<h3>Din kvittering:</h3>
+<dl>
+    <dt style ="font-size:22px">Bookingoplysninger:</dt>
+    <dt>Film titel: @Model.Showing.MovieCopy.MovieType.Title</dt>
+    <dt>Længde: @Model.Showing.MovieCopy.MovieType.Length minutter</dt>
+</dl>
+<dl>
+    <dt>Sal: @Model.BookedSeats[0].ShowroomId</dt>
+    <dt>Række: @Model.BookedSeats[0].RowNumber</dt>
+    <dt>Sæde(r):
+            @foreach (Seat seat in Model.BookedSeats)
+            {
+             seatString += @seat.SeatNumber;
+             if(Model.BookedSeats.Last() != seat)
+             {
+                seatString += ", ";
+             }
+
+              
+            }
+            @seatString
+    </dt>
+    <dt>Dato og tidspunkt: @Model.Showing.startTime.Day/@Model.Showing.startTime.Month/@Model.Showing.startTime.Year, kl. @Model.Showing.startTime.Hour:@Model.Showing.startTime.Minute</dt>
+</dl>
+<br>
+<dl>
+    <dt>Booking id: @Model.BookingId</dt>
+    <dt>Transaktionsdato: @Model.TimeOfPurchase.Day/@Model.TimeOfPurchase.Month/@Model.TimeOfPurchase.Year, kl. @Model.TimeOfPurchase.Hour:@Model.TimeOfPurchase.Minute</dt>
+</dl>
+<div class="round-corners1 font" style="background-color:#313740;font-size:22px;"><b>Pris total: @Model.Total DKK</b></div>
+<dl>
+    <dt style="font-size:22px">Brugeroplysninger:</dt>
+    <dt>Navn: @ViewBag.CustomerName</dt>
+    <dt>E-mail: @ViewBag.CustomerEmail</dt>
+    <dt>Telefon nummer: @Model.CustomerPhone</dt>
+</dl>
