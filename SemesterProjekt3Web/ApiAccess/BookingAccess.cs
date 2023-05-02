@@ -43,6 +43,8 @@ namespace SemesterProjekt3Web.ApiAccess
                 savedOk = false;
             }
         }
+    
+        }
 
              
     public async Task<Booking> GetBookingById(int id)
