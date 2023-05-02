@@ -1,29 +1,32 @@
-﻿//using SemesterProjekt3Web.ApiAccess;
-//using SemesterProjekt3Web.Models;
+﻿using SemesterProjekt3Web.Access;
+using SemesterProjekt3Web.ApiAccess;
+using SemesterProjekt3Web.Models;
 
-//namespace SemesterProjekt3Web.BusinessLogic
-//{
-//    public class ShowingAccessLogic
-//    {
-//        public ShowingAccessLogic()
-//        {
-//            var api = new ShowingAccess();
-//        }
-//        public async Task<Showing> GetShowingById(int id)
-//        {
-//             Showing show; 
+namespace SemesterProjekt3Web.BusinessLogic
+{
+    public class ShowingAccessLogic
+    {
+        private readonly ShowingAccess api;
 
-//            try
-//            {
-//                show = await api.GetShowingById(id);
-//            }
-//            catch (Exception)
-//            {
-//                show = null;
-//            }
-//            return show;
-//        }
+        public ShowingAccessLogic()
+        {
+            api = new ShowingAccess();
+        }
+        public async Task<Showing> GetShowingById(int id)
+        {
+             Showing show; 
+
+            try
+            {
+                show = await api.GetShowingById(id);
+            }
+            catch (Exception)
+            {
+                show = null;
+            }
+            return show;
+        }
 
 
-//    }
-//}
+    }
+}
