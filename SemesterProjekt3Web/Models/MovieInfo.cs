@@ -3,7 +3,7 @@
     public class MovieInfo
     {
 
-        public int Id { get; set; }
+        public int InfoId { get; set; }
         public string Title { get; set; }
         public int Length { get; set; }
         public string Genre { get; set; }
