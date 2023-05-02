@@ -10,7 +10,7 @@ namespace SemesterProjekt3Web.BusinessLogic
 
         public MovieAccessLogic()
         {
-           var api = new MovieAccess();
+           api = new MovieAccess();
         }
 
         public async Task<IEnumerable<MovieInfo>> GetMovies()
