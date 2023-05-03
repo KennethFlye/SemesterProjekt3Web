@@ -13,6 +13,22 @@ namespace SemesterProjekt3Web.BusinessLogic
             var api = new BookingAccess();
         }
 
+        
+        public async Task<bool> AddBooking(Booking res)
+        {
+            bool saved;
+            try
+            {
+                saved = await api.AddBooking(res);
+            }
+            catch  (Exception)
+            {
+                saved = false;
+            }
+
+            return saved;
+        }
+        
         public async Task<Booking> GetBookingById(int id)
         {
             Booking book;
