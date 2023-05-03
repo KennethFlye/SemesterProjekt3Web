@@ -80,6 +80,7 @@ namespace SemesterProjekt3Web.ApiAccess
             {
                 throw;
             }
+            
             return book;
         }
         public async Task<IEnumerable<Seat>> GetSeatsByBooking()

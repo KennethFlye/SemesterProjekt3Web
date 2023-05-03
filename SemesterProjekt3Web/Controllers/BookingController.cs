@@ -55,16 +55,18 @@ namespace SemesterProjekt3Web.Controllers
 
             BookingAccess ba = new BookingAccess();
             Booking otherBooking = await ba.GetBookingById(1);
+            otherBooking.Showing.ShowingId = 3;
+
             Console.WriteLine(otherBooking);
 
-            return View(newBooking);
+            return View(otherBooking);
         }
 
         public async Task<IActionResult> ReceiptAsync(string name, string email, string phoneNo, string booking)
         {
             Console.WriteLine(booking);
             Booking realBooking = JsonConvert.DeserializeObject<Booking>(booking);
-            realBooking.CustomerPhone = phoneNo;
+            //realBooking.CustomerPhone = phoneNo;
             ViewBag.CustomerName = name;
             ViewBag.CustomerEmail = email;
             BookingAccess ba = new BookingAccess();
