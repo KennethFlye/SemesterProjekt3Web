@@ -35,6 +35,7 @@ namespace SemesterProjekt3Web.ApiAccess
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 Console.WriteLine(5);
                 var postResponse = await client.PostAsync(uri, content);
+                Console.WriteLine(postResponse.StatusCode);
                 Console.WriteLine(6);
                 if (postResponse != null && postResponse.IsSuccessStatusCode)
                 {
