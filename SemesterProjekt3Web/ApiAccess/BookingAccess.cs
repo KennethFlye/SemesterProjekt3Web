@@ -46,7 +46,6 @@ namespace SemesterProjekt3Web.ApiAccess
         }
 
 
-
         public async Task<Booking> GetBookingById(int id)
         {
             Booking book;
@@ -106,4 +105,3 @@ namespace SemesterProjekt3Web.ApiAccess
 
     }
 }
-
