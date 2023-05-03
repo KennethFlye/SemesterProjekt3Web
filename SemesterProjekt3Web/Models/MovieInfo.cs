@@ -1,4 +1,4 @@
-﻿namespace SemesterProjekt3Web.Models
+﻿namespace SemesterProjekt3Api.Model
 {
     public class MovieInfo
     {

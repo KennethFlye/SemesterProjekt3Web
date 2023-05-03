@@ -38,19 +38,3 @@ body {
     background-attachment: fixed;
     https: //www.megeve-tourisme.fr/app/uploads/iris-images/10199/cinema-panoramic-megeve-1920x1080-c.jpg
 }
-
-.square {
-    height: 50px;
-    width: 50px;
-    background-color: white;
-    margin: 10px;
-    align-items: center;
-    justify-content: center;
-}
-
-.center {
-}
-
-.smallDistance{
-    margin-bottom:20px;
-}
