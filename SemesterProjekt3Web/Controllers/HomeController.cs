@@ -13,37 +13,71 @@ namespace SemesterProjekt3Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        readonly MovieAccessLogic _movieAL;
+        readonly BookingAccessLogic _movieAL;
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _movieAL = new MovieAccessLogic();
+            _movieAL = new BookingAccessLogic();
         }
 
         public IActionResult Index()
         {
+
+            Task<IEnumerable<MovieInfo>> mInfo = _movieAL.GetMovies();
+            var nInfo = mInfo.GetAwaiter().GetResult();
+            return View(nInfo);
             
-            return View();
         }
 
         public IActionResult Privacy()
         {
             return View();
         }
-        public  IActionResult Movies()
-        {
+        //public  IActionResult Movies()
+        //{
 
-            Task<IEnumerable<MovieInfo>> mInfo = _movieAL.GetMovies();
-            var nInfo = mInfo.GetAwaiter().GetResult();
-            return View(nInfo);
+        //    //Task<IEnumerable<MovieInfo>> mInfo = _movieAL.GetMovies();
+        //    var nInfo = mInfo.GetAwaiter().GetResult();
+        //    return View(nInfo);
+        //}
+
+        //public ActionResult Showings(int id)
+        //{
+        //    //Task<IEnumerable<Showing>> mInfo = _movieAL.GetShowingsByMovieID(id);
+        //   // var nInfo = mInfo.GetAwaiter().GetResult();
+        //    //return View(nInfo);
+        //}
+
+
+        
+        public  async Task<ActionResult> Create()
+        {
+            Booking res = new();
+            bool wasUpdated = await _movieAL.AddBooking(res);
+            Booking currentShowing = null;
+            if (wasUpdated)
+            {
+                TempData["ProcessText"] = "IT Worked!";
+                currentShowing = res; 
+                
+            }
+            else
+            {
+                TempData["ProcessText"] = "Sorry - not sorry";
+            }
+
+            if (currentShowing != null)
+            {
+                return RedirectToAction("Privacy");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
-        public ActionResult Showings(int id)
-        {
-            Task<IEnumerable<Showing>> mInfo = _movieAL.GetShowingsByMovieID(id);
-            var nInfo = mInfo.GetAwaiter().GetResult();
-            return View(nInfo);
-        }
+    
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

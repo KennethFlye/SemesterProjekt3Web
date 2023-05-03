@@ -3,4 +3,9 @@
 }
 <h1>@ViewData["Title"]</h1>
 
+@if (TempData["ProcessText"] != null)
+{
+    <h3>Reservation result: @TempData["ProcessText"]</h3>
+}
+
 <p>Use this page to detail your site's privacy policy.</p>

@@ -2,6 +2,14 @@
 {
     public class Booking
     {
+        public Booking()
+        {
+            TimeOfPurchase = DateTime.Now;
+            Total = 20;
+            CustomerPhone = "48939457";
+            BookedSeats = null;
+            Showing = null;
+        }
 
         public int BookingId { get; set; }
         public DateTime TimeOfPurchase { get; set; }
