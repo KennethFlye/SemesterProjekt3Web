@@ -24,17 +24,23 @@ namespace SemesterProjekt3Web.ApiAccess
 
             try
             {
-                var response = await client.GetAsync(uri);
-                if (response.IsSuccessStatusCode)
+                Console.WriteLine(1);
+                //var response = await client.GetAsync(uri);
+                Console.WriteLine(2);
+
+
+                Console.WriteLine(3);
+                var json = JsonConvert.SerializeObject(res);
+                Console.WriteLine(4);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                Console.WriteLine(5);
+                var postResponse = await client.PostAsync(uri, content);
+                Console.WriteLine(6);
+                if (postResponse != null && postResponse.IsSuccessStatusCode)
                 {
-                    var json = JsonConvert.SerializeObject(res);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var postResponse = await client.PostAsync(uri, content);
-                    if (postResponse != null && postResponse.IsSuccessStatusCode)
-                    {
-                        savedOk = true;
-                    }
+                    savedOk = true;
                 }
+
 
 
             }
@@ -42,6 +48,7 @@ namespace SemesterProjekt3Web.ApiAccess
             {
                 savedOk = false;
             }
+            Console.WriteLine(savedOk);
             return savedOk;
         }
 

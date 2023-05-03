@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using SemesterProjekt3Api.Model;
+using SemesterProjekt3Web.ApiAccess;
+using SemesterProjekt3Web.Models;
 using SemesterProjekt3Web.Models;
 using System.Diagnostics;
 
@@ -19,10 +20,10 @@ namespace SemesterProjekt3Web.Controllers
             return View();
         }
 
-        public IActionResult CustomerInfo()
+        public async Task<IActionResult> CustomerInfoAsync()
         {
             Booking newBooking = new Booking();
-            newBooking.BookingId = 5;
+            newBooking.BookingId = 36;
             newBooking.Total = 249.99;
             newBooking.TimeOfPurchase = new DateTime(2023, 05, 05, 13, 32, 55);
 
@@ -52,17 +53,22 @@ namespace SemesterProjekt3Web.Controllers
             seat3.SeatNumber = 8;
             newBooking.BookedSeats.Add(seat3);
 
+            BookingAccess ba = new BookingAccess();
+            Booking otherBooking = await ba.GetBookingById(1);
+            Console.WriteLine(otherBooking);
+
             return View(newBooking);
         }
 
-        public IActionResult Receipt(string name, string email, string phoneNo, string booking)
+        public async Task<IActionResult> ReceiptAsync(string name, string email, string phoneNo, string booking)
         {
             Console.WriteLine(booking);
             Booking realBooking = JsonConvert.DeserializeObject<Booking>(booking);
             realBooking.CustomerPhone = phoneNo;
             ViewBag.CustomerName = name;
             ViewBag.CustomerEmail = email;
-
+            BookingAccess ba = new BookingAccess();
+            await ba.AddBooking(realBooking);
 
             return View(realBooking);
         }
