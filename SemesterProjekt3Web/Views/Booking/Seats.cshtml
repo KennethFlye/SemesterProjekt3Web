@@ -40,11 +40,16 @@
                 <button class="btn btn-primary" id="plus-ticket-button">+</button>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <button class="btn btn-success" id="submit-seat-selection">Godkend</button>
+        <form name="seats" action="@Url.Action("CustomerInfo", "Booking")" method="post" id="myForm">
+            <div class="row">
+                <div class="col">
+                    <input type="hidden" id="myListInput" name="myListInput" />
+
+                    <button type="button"class="btn btn-success" id="submit-seat-selection">Godkend</button>
+                </div>
             </div>
-        </div>
+
+        </form>
     </div>
     <div class="col offset-1 seat-section">
         <div class="row">
@@ -151,19 +156,9 @@
 
                 alert(seatIds.join());
 
-                $.ajax({
-                    type: "POST",
-                    url: "Url.Action("CustomerInfo", "BookingController")",
-                    data: JSON.stringify({myCollection: seatIds}),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function(result){
-                        console.log(result);
-                    },
-                    error: function (xhr, status, error){
-                        console.log(error);
-                    }
-                });
+                document.getElementById("myListInput").value = JSON.stringify(seatIds);
+                document.forms[0].submit();
+
             }
             
         });

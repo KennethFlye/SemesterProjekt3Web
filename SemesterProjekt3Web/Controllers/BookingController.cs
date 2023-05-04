@@ -19,8 +19,30 @@ namespace SemesterProjekt3Web.Controllers
             return View();
         }
 
+        
         public IActionResult CustomerInfo()
         {
+            var formData = Request.Form["myListInput"];
+            string seats = "";
+
+            var myList = new List<string>();
+            foreach (var item in formData.ToString().Split(','))
+            {
+                string addItem = item;
+                if (item.StartsWith("["))
+                {
+                    addItem = item.TrimStart('[');
+                }
+                if (item.EndsWith("]"))
+                {
+                    addItem = item.TrimEnd(']');
+                }
+
+                myList.Add(addItem);
+                Console.WriteLine(addItem);
+            }
+
+            Console.WriteLine(myList);
             return View();
         }
 
