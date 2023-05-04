@@ -7,7 +7,7 @@
     ViewData["Title"] = "Seats";
     HttpClient client = new HttpClient();
 
-    var respTask = client.GetAsync("https://localhost:7155/api/showings/booked/3");
+    var respTask = client.GetAsync($"https://localhost:7155/api/showings/booked/{Model.ShowingId}");
     respTask.Wait();
     StreamReader sr = new(respTask.Result.Content.ReadAsStream());
     string stringResult = sr.ReadToEnd();
@@ -27,7 +27,7 @@
         Tickets
         <div class="row">
             <div class="col-auto">
-                <h6 style="margin-top:10px">150 dkk/billet</h6>
+                <h6 style="margin-top:10px">@Model.MovieCopy.Price dkk/billet</h6>
                 <!-- Implementer den tager prisen fra showing -->
             </div>
             <div class="col-auto">
@@ -155,7 +155,6 @@
                     return this.value;
                 }).get();
 
-                alert(seatIds.join());
 
                 document.getElementById("myListInput").value = JSON.stringify(seatIds);
                 document.forms[0].submit();

@@ -20,7 +20,7 @@ namespace SemesterProjekt3Web.Controllers
         }
 
         
-        public IActionResult CustomerInfo()
+        public async Task<IActionResult> CustomerInfo()
         {
             //Vi henter vores seat id'er og putter dem i en liste
             var formData = Request.Form["myListInput"];
@@ -53,7 +53,14 @@ namespace SemesterProjekt3Web.Controllers
             newBooking.Showing = realShowing;
             newBooking.Total = (realShowing.MovieCopy.Price) * myList.Count;
             
-
+            SeatsAccess seatAccess = new SeatsAccess();
+            List<Seat> seats = new List<Seat>();
+            foreach (var seat in myList)
+            {
+                Seat tempSeat = await seatAccess.GetSeatById(seat);
+                seats.Add(tempSeat);
+            }
+            newBooking.BookedSeats = seats;
             return View(newBooking);
         }
 
@@ -71,7 +78,7 @@ namespace SemesterProjekt3Web.Controllers
             return View(foundShowing);
         }
 
-        public async IActionResult Receipt(string name, string email, string phoneNo, string booking)
+        public async Task<IActionResult> Receipt(string name, string email, string phoneNo, string booking)
         {
             Console.WriteLine(booking);
             Booking realBooking = JsonConvert.DeserializeObject<Booking>(booking);
