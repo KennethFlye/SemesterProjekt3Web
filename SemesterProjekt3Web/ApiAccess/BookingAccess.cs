@@ -1,5 +1,4 @@
-﻿/**
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using SemesterProjekt3Web.Models;
 using System.Text;
 
@@ -18,93 +17,100 @@ namespace SemesterProjekt3Web.ApiAccess
 
 
 
-        public async Task<bool> AddBooking(Booking item)
+        public async Task<bool> AddBooking(Booking res)
         {
             bool savedOk = false;
-
-
             var uri = new Uri(baseUrl);
+
+            try
+            {
+                Console.WriteLine(1);
+                //var response = await client.GetAsync(uri);
+                Console.WriteLine(2);
+
+
+                Console.WriteLine(3);
+                var json = JsonConvert.SerializeObject(res);
+                Console.WriteLine(4);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                Console.WriteLine(5);
+                var postResponse = await client.PostAsync(uri, content);
+                Console.WriteLine(postResponse.StatusCode);
+                Console.WriteLine(6);
+                if (postResponse != null && postResponse.IsSuccessStatusCode)
+                {
+                    savedOk = true;
+                }
+
+
+
+            }
+            catch
+            {
+                savedOk = false;
+            }
+            Console.WriteLine(savedOk);
+            return savedOk;
+        }
+
+
+        public async Task<Booking> GetBookingById(int id)
+        {
+            Booking book;
+
+
+            string url = baseUrl + $"/{id}";
+            var uri = new Uri(string.Format(url));
+
 
             try
             {
                 var response = await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
-                    var json = JsonConvert.SerializeObject(item);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                    var serviceResponse = await _lineServiceConnection.CallServicePost(content);
-                    if (serviceResponse != null && serviceResponse.IsSuccessStatusCode)
-                    {
-                        savedOk = true;
-                    }
+                    var content = await response.Content.ReadAsStringAsync();
+                    book = JsonConvert.DeserializeObject<Booking>(content);
                 }
-                    catch
-            {
-                savedOk = false;
+                else
+                {
+                    book = null;
+                }
             }
+            catch
+            {
+                throw;
+            }
+
+            return book;
         }
-    
-        }
-
-             
-    public async Task<Booking> GetBookingById(int id)
-    {
-        Booking book;
-
-
-        string url = baseUrl + $"/{id}";
-        var uri = new Uri(string.Format(url));
-
-
-        try
+        public async Task<IEnumerable<Seat>> GetSeatsByBooking()
         {
-            var response = await client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
+            List<Seat> seats;
+
+
+            string url = baseUrl + $"/seats";
+            var uri = new Uri(string.Format(url));
+
+
+            try
             {
-                var content = await response.Content.ReadAsStringAsync();
-                book = JsonConvert.DeserializeObject<Booking>(content);
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    seats = JsonConvert.DeserializeObject<List<Seat>>(content);
+                }
+                else
+                {
+                    seats = null;
+                }
             }
-            else
+            catch
             {
-                book = null;
+                throw;
             }
+            return seats;
         }
-        catch
-        {
-            throw;
-        }
-        return book;
+
     }
-    public async Task<IEnumerable<Seat>> GetSeatsByBooking()
-    {
-        List<Seat> seats;
-
-
-        string url = baseUrl + $"/seats";
-        var uri = new Uri(string.Format(url));
-
-
-        try
-        {
-            var response = await client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                seats = JsonConvert.DeserializeObject<List<Seat>>(content);
-            }
-            else
-            {
-                seats = null;
-            }
-        }
-        catch
-        {
-            throw;
-        }
-        return seats;
-    }
-
 }
-}
-*/

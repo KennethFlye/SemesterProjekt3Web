@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using SemesterProjekt3Web.ApiAccess;
 using SemesterProjekt3Web.Models;
 using System.Diagnostics;
 
@@ -79,6 +80,8 @@ namespace SemesterProjekt3Web.Controllers
             ViewBag.CustomerName = name;
             ViewBag.CustomerEmail = email;
 
+            BookingAccess ba = new BookingAccess();
+            await ba.AddBooking(realBooking);
 
             return View(realBooking);
         }
