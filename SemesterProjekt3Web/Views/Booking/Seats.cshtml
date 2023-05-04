@@ -13,6 +13,7 @@
     string stringResult = sr.ReadToEnd();
     sr.Close();
     List<Seat> bookedSeats = JsonConvert.DeserializeObject<List<Seat>>(stringResult);
+    string showing = JsonConvert.SerializeObject(Model);
 }
 
 <div class="row">
@@ -44,7 +45,7 @@
             <div class="row">
                 <div class="col">
                     <input type="hidden" id="myListInput" name="myListInput" />
-
+                    <input type="hidden" id="showing" name="showing" value="@showing"/>
                     <button type="button"class="btn btn-success" id="submit-seat-selection">Godkend</button>
                 </div>
             </div>
@@ -158,6 +159,7 @@
 
                 document.getElementById("myListInput").value = JSON.stringify(seatIds);
                 document.forms[0].submit();
+                document.forms[1].submit();
 
             }
             

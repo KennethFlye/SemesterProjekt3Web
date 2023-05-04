@@ -22,9 +22,12 @@ namespace SemesterProjekt3Web.Controllers
         
         public IActionResult CustomerInfo()
         {
+            //Vi henter vores seat id'er og putter dem i en liste
             var formData = Request.Form["myListInput"];
-            string seats = "";
+            var showingData = Request.Form["showing"];
+            Showing realShowing = JsonConvert.DeserializeObject<Showing>(showingData);
 
+            Console.WriteLine("showingdata:" + showingData);
             var myList = new List<string>();
             foreach (var item in formData.ToString().Split(','))
             {
@@ -41,9 +44,16 @@ namespace SemesterProjekt3Web.Controllers
                 myList.Add(addItem);
                 Console.WriteLine(addItem);
             }
-
             Console.WriteLine(myList);
-            return View();
+
+            //Nu opretter vi vores booking objekt
+            Console.WriteLine(realShowing.ShowingId);
+            Booking newBooking = new Booking();
+            newBooking.Showing = realShowing;
+            newBooking.Total = (realShowing.MovieCopy.Price) * myList.Count;
+            
+
+            return View(newBooking);
         }
 
         public IActionResult Seats()
