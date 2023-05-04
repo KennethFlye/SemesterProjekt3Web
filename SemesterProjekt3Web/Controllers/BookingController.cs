@@ -75,6 +75,7 @@ namespace SemesterProjekt3Web.Controllers
             Console.WriteLine(booking);
             Booking realBooking = JsonConvert.DeserializeObject<Booking>(booking);
             realBooking.CustomerPhone = phoneNo;
+            realBooking.TimeOfPurchase = DateTime.Now;
             ViewBag.CustomerName = name;
             ViewBag.CustomerEmail = email;
 
