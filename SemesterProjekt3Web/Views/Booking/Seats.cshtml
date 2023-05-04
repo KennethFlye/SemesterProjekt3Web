@@ -27,6 +27,7 @@
         <div class="row">
             <div class="col-auto">
                 <h6 style="margin-top:10px">150 dkk/billet</h6>
+                <!-- Implementer den tager prisen fra showing -->
             </div>
             <div class="col-auto">
                 <button class="btn btn-primary" id="minus-ticket-button">-</button>
@@ -119,6 +120,14 @@
             
         });
 
+        $('.list-group-item').on('mouseenter mouseleave', function(){
+            var isReserved = $(this).attr('data-is-reserved');
+            if (isReserved == "false" && amountOfSeatsChoosen < amountOfTickets || isReserved == "false" && $(this).hasClass('list-group-item-success')) {
+                var itemId = $(this).attr('id');
+                $('#' + itemId).toggleClass('list-group-item-secondary');
+            }
+        })
+
         $('#plus-ticket-button').on('click', function(){
             if(amountOfTickets < amountOfTicketsAvailable){
                 amountOfTickets++;
@@ -131,17 +140,34 @@
                 amountOfTickets--;
                 $('#seatAmountText').html(amountOfTickets);
             }
-        })
+        });
 
-        $('#submit-seat-selection').on('click', function(){
+        $('#submit-seat-selection').on('click', function (){
             if(amountOfTickets == amountOfSeatsChoosen){
-                
-                //Opret liste med valgte sæder, noget med alle der har den specifikke klasse og så deres value
-                //Send liste med sæder og showing videre til Customer view
-            }
 
+                var seatIds = $(".list-group-item-success").map(function(){
+                    return this.value;
+                }).get();
+
+                alert(seatIds.join());
+
+                $.ajax({
+                    type: "POST",
+                    url: "Url.Action("CustomerInfo", "BookingController")",
+                    data: JSON.stringify({myCollection: seatIds}),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(result){
+                        console.log(result);
+                    },
+                    error: function (xhr, status, error){
+                        console.log(error);
+                    }
+                });
+            }
             
-        })
+        });
+
 
     })
 </script>
