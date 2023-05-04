@@ -7,63 +7,40 @@
 
 <h1>Showings</h1>
 
-<table class="table text-white">
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
     <thead>
         <tr>
             <th>
-                Dato og startstidspunkt:
+                @Html.DisplayNameFor(model => model.ShowingId)
             </th>
             <th>
-                Sprog:
+                @Html.DisplayNameFor(model => model.startTime)
             </th>
             <th>
-                2D/3D:
+                @Html.DisplayNameFor(model => model.IsKidFriendly)
             </th>
-            <th>
-                Børnevenlig:
-            </th>
-            <th>
-                Pris:
-            </th>
-            <th style="visibility:hidden">
-                Book:
-            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                 @item.startTime.ToString("dd/MM/yyyy HH:mm")
+                @Html.DisplayFor(modelItem => item.ShowingId)
             </td>
             <td>
-                @item.MovieCopy.Language
+                @Html.DisplayFor(modelItem => item.startTime)
             </td>
             <td>
-                    @if (item.MovieCopy.Is3D)
-                    {
-                        <div>3D</div>
-                    }
-                    else
-                    {
-                        <div>2D</div>
-                    }
-                </td>
-            <td>
-                    @if (item.IsKidFriendly)
-                    {
-                        <div>Ja</div>
-                    }
-                    else
-                    {
-                        <div>Nej</div>
-                    }
+                @Html.DisplayFor(modelItem => item.IsKidFriendly)
             </td>
             <td>
-                @item.MovieCopy.Price Kr
-            </td>
-            <td>
-                    <a href="/Booking/seats/@item.ShowingId"><button class="btn btn-lg button-color text-white">Book</button></a>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }

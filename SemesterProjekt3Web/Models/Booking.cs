@@ -10,5 +10,6 @@
         public List<Seat> BookedSeats { get; set; }
         public Showing Showing { get; set; }
 
+        
     }
 }
