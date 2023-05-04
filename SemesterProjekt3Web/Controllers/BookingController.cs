@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using SemesterProjekt3Api.Model;
 using SemesterProjekt3Web.Models;
 using System.Diagnostics;
 
@@ -56,11 +55,11 @@ namespace SemesterProjekt3Web.Controllers
             return View(newBooking);
         }
 
-        public IActionResult Seats()
+        public IActionResult Seats(int id)
         {
             HttpClient client = new HttpClient();
 
-            var respTask = client.GetAsync("https://localhost:7155/api/showings/3");
+            var respTask = client.GetAsync($"https://localhost:7155/api/showings/{id}");
             respTask.Wait();
             StreamReader sr = new(respTask.Result.Content.ReadAsStream());
             string stringResult = sr.ReadToEnd();
