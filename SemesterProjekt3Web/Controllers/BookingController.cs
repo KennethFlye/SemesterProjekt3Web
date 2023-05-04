@@ -71,7 +71,7 @@ namespace SemesterProjekt3Web.Controllers
             return View(foundShowing);
         }
 
-        public IActionResult Receipt(string name, string email, string phoneNo, string booking)
+        public async IActionResult Receipt(string name, string email, string phoneNo, string booking)
         {
             Console.WriteLine(booking);
             Booking realBooking = JsonConvert.DeserializeObject<Booking>(booking);
