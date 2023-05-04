@@ -48,6 +48,7 @@ namespace SemesterProjekt3Web.Controllers
             //Nu opretter vi vores booking objekt
             Console.WriteLine(realShowing.ShowingId);
             Booking newBooking = new Booking();
+            newBooking.BookingId = 0;
             newBooking.Showing = realShowing;
             newBooking.Total = (realShowing.MovieCopy.Price) * myList.Count;
             
@@ -67,6 +68,18 @@ namespace SemesterProjekt3Web.Controllers
             Showing foundShowing = JsonConvert.DeserializeObject<Showing>(stringResult);
 
             return View(foundShowing);
+        }
+
+        public IActionResult Receipt(string name, string email, string phoneNo, string booking)
+        {
+            Console.WriteLine(booking);
+            Booking realBooking = JsonConvert.DeserializeObject<Booking>(booking);
+            realBooking.CustomerPhone = phoneNo;
+            ViewBag.CustomerName = name;
+            ViewBag.CustomerEmail = email;
+
+
+            return View(realBooking);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
