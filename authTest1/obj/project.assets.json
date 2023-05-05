@@ -3905,11 +3905,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bjoer\\source\\repos\\authTest1\\authTest1\\authTest1.csproj",
+      "projectUniqueName": "C:\\Users\\Bjoer\\Documents\\GitHubStuff\\SemesterProjekt3Web\\authTest1\\authTest1.csproj",
       "projectName": "authTest1",
-      "projectPath": "C:\\Users\\Bjoer\\source\\repos\\authTest1\\authTest1\\authTest1.csproj",
+      "projectPath": "C:\\Users\\Bjoer\\Documents\\GitHubStuff\\SemesterProjekt3Web\\authTest1\\authTest1.csproj",
       "packagesPath": "C:\\Users\\Bjoer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bjoer\\source\\repos\\authTest1\\authTest1\\obj\\",
+      "outputPath": "C:\\Users\\Bjoer\\Documents\\GitHubStuff\\SemesterProjekt3Web\\authTest1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

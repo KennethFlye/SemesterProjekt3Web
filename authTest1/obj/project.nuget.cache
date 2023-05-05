@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9+IGryscPe8RlhY2y0c/p1hTRYh+r82/4BNGuIRzaaiVdyZcHTgGP1RMhHCaAJTiRfMnzxG/2DeW4NXSywAbig==",
+  "dgSpecHash": "tkWCPGNeEUjC6CBBsHRllYAgrToxw+7aungQY6/jel039wldZ+LggXwfqqr6ScO7vbd/AwL1nLCkSgBqUVc9hw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bjoer\\source\\repos\\authTest1\\authTest1\\authTest1.csproj",
+  "projectFilePath": "C:\\Users\\Bjoer\\Documents\\GitHubStuff\\SemesterProjekt3Web\\authTest1\\authTest1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bjoer\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Bjoer\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
