@@ -31,9 +31,15 @@ app.UseAuthentication();;
 
 app.UseAuthorization();
 
+/*app.MapAreaControllerRoute(
+    name: "Identity",
+    areaName: "Identity",
+    pattern: "/Areas/Identity");*/
+
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=movies}/{id?}");
+    pattern: "{controller=Home}/{action=Movies}/{id?}");
 app.MapControllerRoute(
     name: "showings", pattern: "Movies/{id}/Showings", defaults: new { controller = "Home", action = "Showings" });
 app.Run();
