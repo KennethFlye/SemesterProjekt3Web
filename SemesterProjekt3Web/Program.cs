@@ -1,4 +1,14 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using SemesterProjekt3Web.Data;
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("SemesterProjekt3WebContextConnection") ?? throw new InvalidOperationException("Connection string 'SemesterProjekt3WebContextConnection' not found.");
+
+builder.Services.AddDbContext<SemesterProjekt3WebContext>(options =>
+    options.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<SemesterProjekt3WebContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -17,6 +27,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 

@@ -7,6 +7,8 @@
 
 <h1>Velkommen til Vestbjerg Bio!</h1>
 <p style="font-size:22px">Vælg en af vores film for at se dens forestillinger</p>
+
+@if(Model!=null)
 @foreach (MovieInfo movie in Model)
 {
     <div>
