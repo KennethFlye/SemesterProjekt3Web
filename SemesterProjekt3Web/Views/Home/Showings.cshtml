@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SemesterProjekt3Web.Models.Showing>
+
+@{
+    ViewData["Title"] = "Showings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Showings</h1>
+
+<table class="table text-white">
+    <thead>
+        <tr>
+            <th>
+                Dato og startstidspunkt:
+            </th>
+            <th>
+                Sprog:
+            </th>
+            <th>
+                2D/3D:
+            </th>
+            <th>
+                Børnevenlig:
+            </th>
+            <th>
+                Pris:
+            </th>
+            <th style="visibility:hidden">
+                Book:
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                 @item.startTime.ToString("dd/MM/yyyy HH:mm")
+            </td>
+            <td>
+                @item.MovieCopy.Language
+            </td>
+            <td>
+                    @if (item.MovieCopy.Is3D)
+                    {
+                        <div>3D</div>
+                    }
+                    else
+                    {
+                        <div>2D</div>
+                    }
+                </td>
+            <td>
+                    @if (item.IsKidFriendly)
+                    {
+                        <div>Ja</div>
+                    }
+                    else
+                    {
+                        <div>Nej</div>
+                    }
+            </td>
+            <td>
+                @item.MovieCopy.Price Kr
+            </td>
+            <td>
+                    <a href="/Booking/seats/@item.ShowingId"><button class="btn btn-lg button-color text-white">Book</button></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,79 @@
+﻿@using System.Text.RegularExpressions;
+@using Newtonsoft.Json;
+@using SemesterProjekt3Web.Models;
+@model SemesterProjekt3Web.Models.Booking
+@{
+    ViewData["Title"] = "Customer Information";
+    string booking = JsonConvert.SerializeObject(Model);
+}
+<h1 class="text-center">Brugeroplysninger</h1>
+<br>
+<div style="text-align:right;">
+    <h2>Indtast venligt brugeroplysninger nedenfor</h2>
+    <form name="customerInfo" action="@Url.Action("Receipt", "Booking")" method="post" id="myForm">
+        <div style="margin-bottom:5px;">
+            <i>Fulde navn*</i>
+            <input type="text" id="name" name="name"/>
+        </div>
+        <div style="margin-bottom:5px;">
+            <i>E-mail adresse*</i>
+            <input type="text" id="email" name="email"/>
+        </div>
+        <div style="margin-bottom:5px;">
+            <i>Tlf. nummer*</i>
+            <input type="text" id="phoneNo" name="phoneNo"/>
+        </div>
+        <div>
+            <input type="hidden" id="booking" name="booking" value="@booking" />
+        </div>
+        <button id="btn" class="btn btn-lg button-color text-white" style="margin-top:6px;" type="submit"> <b>Fortsæt</b> </button>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="~/js/site.js"></script>
+
+<script>
+    $(function(){
+        $("#myForm").submit(function(event){
+            
+            var inputName = $("#name").val();
+            var inputEmail = $("#email").val();
+            var inputPhoneNo = $("#phoneNo").val();
+            var alertMsg = "";
+            var showAlert = false;
+
+            var nameRegex = RegExp(namePattern);
+            var emailRegex = RegExp(emailPattern);
+            var phoneNoRegex = RegExp(phoneNoPattern);
+
+            if (inputName === ""){
+                alertMsg += "Please fill in: Name\n"
+            }
+            else if (!nameRegex.test(inputName)){
+                alertMsg += "Invalid Name\n"
+            }
+            
+            if (inputEmail === ""){
+                alertMsg += "Please fill in: Email\n"
+            }
+            else if (!emailRegex.test(inputEmail)) {
+                alertMsg += "Invalid Email\n"
+            }
+            if (inputPhoneNo === ""){
+                alertMsg += "Please fill in: Phone number\n"
+            }
+            else if (!phoneNoRegex.test(inputPhoneNo)) {
+                alertMsg += "Invalid Phone number\n"
+            }
+            
+            if (alertMsg !== ""){
+                event.preventDefault();
+                alert(alertMsg)
+            }
+            
+        });
+    });
+    
+
+</script>

@@ -1,0 +1,57 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.button-color {
+    background: #C73E35
+}
+
+.panel-color {
+    background: rgba(57, 68, 90, 0.97)
+}
+
+.round-corners1 {
+    border-radius: 25px;
+    padding: 20px;
+    
+}
+
+.cinema-background {
+    background-image: url("https://open-stand.org/wp-content/uploads/2016/04/International-Union-of-Cinemas-Calls-for-Open-Standards-in-the-Cinema-Industry.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    https: //www.megeve-tourisme.fr/app/uploads/iris-images/10199/cinema-panoramic-megeve-1920x1080-c.jpg
+}
+
+.square {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.center {
+}
+
+.smallDistance{
+    margin-bottom:20px;
+}
+
